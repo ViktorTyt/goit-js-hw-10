@@ -1,6 +1,6 @@
-export const fetchCountries = name => {
+const fetchCountries = name => {
   const url = `https://restcountries.com/v3.1/name/${name}`;
-  return fetch(url)
+  const promise = fetch(url)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -11,4 +11,6 @@ export const fetchCountries = name => {
     .catch(error => {
       console.log('error');
     });
+  return promise;
 };
+export default fetchCountries;
