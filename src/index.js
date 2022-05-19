@@ -1,7 +1,7 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 
-import fetchCountries from './fetchCountries';
+import API from './fetchCountries';
 // console.log(fetchCountries('portugal'));
 const DEBOUNCE_DELAY = 2000;
 
@@ -12,12 +12,18 @@ const refs = {
 console.log(refs.input.value);
 
 const onInputCountryName = () => {
-  const name = refs.input.value;
-  if (!name) {
+  const searchName = refs.input.value.trim();
+  if (!searchName) {
     return;
   }
-  console.log('input:', name);
-  fetchCountries(name);
+  console.log('input:', searchName);
+  API.fetchCountries(searchName)
+    .then(render)
+    .catch(error => console.log(error));
+};
+
+const render = country => {
+  console.log(country[0].name.official);
 };
 
 refs.input.addEventListener('input', debounce(onInputCountryName, DEBOUNCE_DELAY));

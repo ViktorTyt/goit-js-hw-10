@@ -1,16 +1,10 @@
+const BASE_URL = 'https://restcountries.com/v3.1';
+
 const fetchCountries = name => {
-  const url = `https://restcountries.com/v3.1/name/${name}`;
-  const promise = fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      return response.json();
-    })
-    .then(data => console.log(data[0].name.official))
-    .catch(error => {
-      console.log('error');
-    });
-  return promise;
+  console.log(name);
+  return fetch(
+    `${BASE_URL}/name/${name}?fields=name,capital,currencies,population,flags,languages`,
+  ).then(response => response.json());
 };
-export default fetchCountries;
+
+export default { fetchCountries };
