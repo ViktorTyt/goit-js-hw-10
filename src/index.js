@@ -7,6 +7,7 @@ const DEBOUNCE_DELAY = 2000;
 
 const refs = {
   input: document.querySelector(['#search-box']),
+  list: document.querySelector('.country-list'),
 };
 
 console.log(refs.input.value);
@@ -22,8 +23,16 @@ const onInputCountryName = () => {
     .catch(error => console.log(error));
 };
 
-const render = country => {
-  console.log(country[0].name.official);
+const render = countries => {
+  console.log(countries);
+  const listItem = countries
+    .map(
+      country => `<li class="country-list__item"><img src="${country.flags.svg}" height="40" width="76"/><span class="h">
+  ${country.name.official}</span></li>`,
+    )
+    .join('');
+  refs.list.innerHTML = '';
+  refs.list.insertAdjacentHTML('afterbegin', listItem);
 };
 
 refs.input.addEventListener('input', debounce(onInputCountryName, DEBOUNCE_DELAY));
