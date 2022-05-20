@@ -25,11 +25,42 @@ body {
 }
 .country-list__item {
   display: flex;
- align-items: center;
+  align-items: center;
 
 }
 .h {
-  font-size: 40px;
+  font-size: 36px;
 
   margin-left: 10px;
+}
+
+.country-info {
+  font-size: 32px;
+  font-weight: 700;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: -15px;
+}
+
+.country-info__item {
+  margin-bottom: 15px;
+}
+
+.country-info__item-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.country-info__title {
+  font-size: 46px;
+  margin-left: 10px;
+}
+.country-info__item-data {
+    font-weight: normal;
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+.country-info:first-child {
+  margin-bottom: 30px;
 }
